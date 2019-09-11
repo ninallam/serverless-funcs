@@ -29,14 +29,14 @@ jobs:
         docker login nikitacontainer.azurecr.io -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
         # If your function app project is not located in your repository's root
         # Please change the path to your directory for docker build
-        docker build . -t nikitacontainer.azurecr.io/default/ninallamDigitalOcean:latest
-        docker push nikitacontainer.azurecr.io/default/ninallamDigitalOcean:latest
+        docker build . -t nikitacontainer.azurecr.io/default/ninallamserverlessfunc:latest
+        docker push nikitacontainer.azurecr.io/default/ninallamserverlessfunc:latest
     - name: 'Run Azure Functions Container Action'
       uses: Azure/functions-container-action@master
       id: fa
       with:
         app-name: GHFuncAppContainer
-        image: nikitacontainer.azurecr.io/default/ninallamDigitalOcean:latest
+        image: nikitacontainer.azurecr.io/default/ninallamserverlessfunc:latest
     #- name: 'use the published functionapp url in upcoming steps'
     #  run: |
     #    echo "${{ steps.fa.outputs.app-url }}"
